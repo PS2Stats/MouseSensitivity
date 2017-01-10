@@ -55,6 +55,11 @@ var updateTypes = function() {
 		}
 	}
 	saveStorage();
+	var text = "[General]";
+	for (var t in sensitivityTypes) {
+		text += "\n" + t + "=" + storage.sensitivities[t];
+	}
+	tarea.val(text);
 };
 
 var target = $("#sensitivityTarget");
@@ -102,7 +107,8 @@ for (var t_ in sensitivityTypes) {
 	})();
 }
 
-updateTypes();
-
-var tarea = $("<textarea/>")
+target.append("<h4>UserOptions.ini</h4>")
+var tarea = $("<textarea readonly cols=44 rows=4/>")
 target.append(tarea);
+
+updateTypes();
